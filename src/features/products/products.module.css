@@ -1,3 +1,18 @@
+.productsDiv{
+  border: 1px solid black;
+  
+}
+.sort{
+  margin-right: 15px;
+  text-align: right;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.sortText{
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 20px;
+}
 .container {
   border: 1px solid black;
   width: 80%;

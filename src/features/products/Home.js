@@ -20,7 +20,7 @@ const Home = () => {
   if (productStatus === "loading") {
     content = <p>Loading..</p>;
   } else if (productStatus === "succeeded") {
-    content = <Products products={products} />;
+    content = <Products products={products}/>;
   } else if (productStatus === "failed") {
     content = <p>{error}</p>;
   }
