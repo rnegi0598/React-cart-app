@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import RatingStar from "./RatingStar";
 import {addCart} from './productsSlice';
 import {useDispatch,useSelector} from 'react-redux';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductView = () => {
   const { id } = useParams();
@@ -12,6 +14,8 @@ const ProductView = () => {
   const addToCartHandler=()=>{
     
     dispatch(addCart(product));
+    toast.success('Product updated successfully',{ autoClose: 2000 ,position: "bottom-right"});
+
   }
 
   return (

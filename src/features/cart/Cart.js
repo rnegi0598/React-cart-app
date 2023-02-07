@@ -4,7 +4,10 @@ import {useState,useEffect} from 'react';
 import styles from './cart.module.css';
 import RatingStar from '../products/RatingStar';
 import {AiFillDelete} from 'react-icons/ai'
-import { deleteCart } from '../products/productsSlice';
+import { deleteFromCart } from '../products/productsSlice';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Cart = () => {
   const dispatch=useDispatch();
   const cart =useSelector(state=>state.products.cart);
@@ -17,17 +20,18 @@ const Cart = () => {
   },[cart])
 
   const deleteItemHandler=(item)=>{
-    dispatch(deleteCart(item));
+    dispatch(deleteFromCart(item))
+    toast.success('Product deleted successfully',{ autoClose: 2000 ,position: "bottom-right"});
   }
 
 
   return (
     <div className={styles.itemContainer}>
-      <h1>Cart</h1>
+     
       {
         cart.map((item)=>{
         return <div className={styles.item} key={item.id}>
-            <div className={styles.colOne}><img style={{width:'100px'}} src={item.image}/></div>
+            <div className={styles.colOne}><img style={{width:'100px'}} src={item.image} alt="logo"/></div>
             <div className={styles.colTwo}>
               <p>{item.title}</p>
               <p>Rs {item.price}</p>
@@ -45,7 +49,10 @@ const Cart = () => {
       })
       }
 
-      <div className={styles.total}>Total : {total}</div>
+      {
+        total?<div className={styles.total}><span>Total</span> : Rs {Math.round(total)}</div>:
+        <p className={styles.empty}>Cart is empty</p>
+      }
     </div>
   )
 }

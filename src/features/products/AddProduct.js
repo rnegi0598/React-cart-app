@@ -3,7 +3,8 @@ import { useState } from "react";
 import { addNewProduct } from "./productsSlice";
 import { useDispatch } from "react-redux";
 import styles from "./addProducts.module.css";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -23,7 +24,16 @@ const AddProduct = () => {
           price,
           rating,
           image:''
-        }));
+        }))
+        .unwrap()
+        .then((result)=>{
+          toast.success("Product Added", { autoClose: 2000 });
+        })
+        .catch((rejectedError) => {
+          console.log(rejectedError);
+          toast.error("Product not added", { autoClose: 2000 });
+        });
+
         setName('');
         setDescription('');
         setPrice('');
@@ -37,7 +47,7 @@ const AddProduct = () => {
           formhandler(e);
         }}
       >
-        <h2>Add a Product</h2>
+        
         <label>
           <p>Name</p>
           <input

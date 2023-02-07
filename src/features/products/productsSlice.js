@@ -50,7 +50,7 @@ const productsSlice=createSlice({
       }
 
     },
-    deleteCart:(state,action)=>{
+    deleteFromCart:(state,action)=>{
       if(action.payload.qty===1){
         state.cart=state.cart.filter((item)=>{
           return item.id!==action.payload.id;
@@ -106,5 +106,5 @@ const productsSlice=createSlice({
 })
 
 
-export const {addCart,deleteCart} = productsSlice.actions;
+export const {addCart,deleteFromCart} = productsSlice.actions;
 export default productsSlice.reducer;

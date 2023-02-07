@@ -7,7 +7,7 @@ const RatingStar = ({rating}) => {
         {
             arr.map((star,ind)=>{
                 if(ind+1 <= rating){
-                    return <AiFillStar key={ind}/>
+                    return <AiFillStar key={ind} style={{color:'#FFC000'}}/>
                 }else{
                     return <AiOutlineStar key={ind}/>
                 }

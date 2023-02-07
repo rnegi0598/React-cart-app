@@ -1,21 +1,26 @@
 .container{
     padding: 20px;
+    min-height: 100vh;
 }
 .container form {
     width: 700px;
     margin: auto;
     background-color: aliceblue;
     text-align: left;
-    padding: 10px 30px;
+    padding: 20px 50px;
     font-size: 1.5rem;
 }
 .container input ,
 .container textarea{
     width: 95%;
+    outline: none;
+    font-size: 1rem;
+    padding: 10px;
 }
 .container input {
     height: 35px;
     outline: none;
+    margin-bottom: 10px;
 
 }
 .container textarea{

@@ -13,7 +13,7 @@ const Products = ({ products }) => {
 
   return (
     <div className={styles.productsDiv}>
-      <h1>Products</h1>
+      <h1 style={{marginLeft:'20px',marginTop:'10px'}}>Products</h1>
       <div className={styles.sort}>
         <span
           className={styles.sortText}
@@ -30,7 +30,7 @@ const Products = ({ products }) => {
               setSort(false);
             }}
           >
-            <AiFillCloseCircle style={{ fontSize: "1.3rem" }} />
+            <AiFillCloseCircle style={{ fontSize: "1.5rem",marginBottom:'-5px' }} />
           </span>
         ) : (
           null

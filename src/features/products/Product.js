@@ -8,6 +8,9 @@ import { useDispatch } from "react-redux";
 import { updateProduct } from "./productsSlice";
 import { deleteProduct } from "./productsSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Product = ({ product }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(product.title);
@@ -39,24 +42,34 @@ const Product = ({ product }) => {
       )
         .unwrap()
         .then((result) => {
-          console.log(result);
+          toast.success("Product Updated", { autoClose: 2000 });
         })
         .catch((rejectedError) => {
           console.log(rejectedError);
+          toast.error("Product Update failed", { autoClose: 2000 ,position: "bottom-right"});
         });
     }
   };
 
   const deleteHandler = () => {
-    dispatch(deleteProduct(product.id));
+    dispatch(deleteProduct(product.id))
+    .unwrap()
+        .then((result) => {
+          toast.success("Product Deleted Successfully", { autoClose: 2000,position: "bottom-right" });
+        })
+        .catch((rejectedError) => {
+          console.log(rejectedError);
+          toast.error("Product Deletion failed", { autoClose: 2000 });
+        });
   };
 
   return (
     <>
       <div className={styles.container}>
-        <Link to={`/products/${product.id}`}>
+        
           <div className={styles.product}>
             <div className={styles.colOne}>
+            <Link to={`/products/${product.id}`}>
               <div className={styles.imgDiv}>
                 {product.image ? (
                   <img src={product.image} alt="prod-img" />
@@ -64,6 +77,7 @@ const Product = ({ product }) => {
                   <img src={noImage} alt="prod-img" />
                 )}
               </div>
+              </Link>
               <div className={styles.imgRight}>
                 <p className={styles.title}>
                   <input
@@ -131,21 +145,21 @@ const Product = ({ product }) => {
               </p>
             </div>
           </div>
-        </Link>
+      
         <div className={styles.controls} style={{ textAlign: "right" }}>
           {editMode ? (
             <AiFillSave
-              style={{ fontSize: "2rem", marginRight: "10px" }}
+              style={{ fontSize: "2rem", marginRight: "10px" ,color:'#400E32'}}
               onClick={saveHandler}
             />
           ) : (
             <AiFillEdit
-              style={{ fontSize: "2rem", marginRight: "10px" }}
+              style={{ fontSize: "2rem", marginRight: "10px",color:'#F94A29' }}
               onClick={editHandler}
             />
           )}
 
-          <AiFillDelete style={{ fontSize: "2rem" }} onClick={deleteHandler} />
+          <AiFillDelete style={{ fontSize: "2rem" ,color:'red'}} onClick={deleteHandler} />
         </div>
       </div>
     </>
