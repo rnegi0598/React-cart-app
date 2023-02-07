@@ -1,9 +1,36 @@
 .container{
     border:1px solid black;
-    padding: 20px;
+    font-size: 2rem;
+    padding: 5px;
 }
-ul{
+.container a{
+  list-style: none;
+  color: black;
+  text-decoration: none;
+}
+.container img{
+  width: 250px;
+  height: 80px;
+}
+.container ul{
   list-style: none;
   display: flex;  
   justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+.cart{
+  margin-right: 20px;
+}
+.cart img{
+  font-size: 2rem;
+}
+.count{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+  background-color: rgb(230, 78, 78);
 }
