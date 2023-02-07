@@ -1,0 +1,35 @@
+.itemContainer {
+  border: 1px solid black;
+  background-color: #D3D3D3;
+  min-height: 100vh;
+}
+
+.item {
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  width:70%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: aliceblue;
+}
+.colOne{
+    width: 200px;
+}
+.colTwo{
+    width: 30%;
+}
+.colThree{
+    width: 50%;
+}
+.item button{
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    margin: 20px;
+}
+
+.total{
+    margin: 10px;
+    font-size: 2rem;
+}

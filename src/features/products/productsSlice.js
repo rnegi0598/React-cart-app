@@ -6,6 +6,7 @@ const API_URL  ="http://localhost:4000/products"
 
 const initialState = {
   products:[],
+  cart:[],
   status: 'idle',//'idle' | 'loading' | 'succeeded' | 'failed'
   error:null,
 };
@@ -34,7 +35,38 @@ export const deleteProduct=createAsyncThunk('products/deleteProduct',async(id)=>
 const productsSlice=createSlice({
   name:'products',
   initialState,
-  reducers:{},
+  reducers:{
+    addCart:(state,action)=>{
+      if(state.cart.find(x=>x.id===Number(action.payload.id))){
+          state.cart=state.cart.map(item=>{
+            if(item.id===Number(action.payload.id)){
+              return {...action.payload,qty:item.qty+1};
+            }else{
+              return item;
+            }
+          })
+      }else{
+        state.cart.push({...action.payload,qty:1});
+      }
+
+    },
+    deleteCart:(state,action)=>{
+      if(action.payload.qty===1){
+        state.cart=state.cart.filter((item)=>{
+          return item.id!==action.payload.id;
+        })
+      }else{
+        state.cart=state.cart.map((item)=>{
+            if(item.id===action.payload.id){
+              return {...item,qty:item.qty-1};
+            }else{
+              return item;
+            }
+        })
+      }
+
+    }
+  },
   extraReducers(builder){
     builder
       .addCase(fetchProducts.pending,(state,action)=>{
@@ -73,4 +105,6 @@ const productsSlice=createSlice({
   }
 })
 
+
+export const {addCart,deleteCart} = productsSlice.actions;
 export default productsSlice.reducer;
