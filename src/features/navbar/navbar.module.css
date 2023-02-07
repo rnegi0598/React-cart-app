@@ -1,0 +1,9 @@
+.container{
+    border:1px solid black;
+    padding: 20px;
+}
+ul{
+  list-style: none;
+  display: flex;  
+  justify-content: space-between;
+}

@@ -1,0 +1,28 @@
+.container{
+    padding: 20px;
+}
+.container form {
+    width: 700px;
+    margin: auto;
+    background-color: aliceblue;
+    text-align: left;
+    padding: 10px 30px;
+    font-size: 1.5rem;
+}
+.container input ,
+.container textarea{
+    width: 95%;
+}
+.container input {
+    height: 35px;
+    outline: none;
+
+}
+.container textarea{
+    height: 50px;
+}
+.container button{
+    margin-top: 20px ;
+    font-size: 1.6rem;
+    text-align: right;   
+}
