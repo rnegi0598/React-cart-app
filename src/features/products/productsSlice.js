@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from "axios";
 
 
-const API_URL  ="http://localhost:4000/products"
+// const API_URL  ="http://localhost:4000/products"
+const API_URL="https://my-json-server.typicode.com/rnegi0598/json-server/products";
 
 const initialState = {
   products:[],
